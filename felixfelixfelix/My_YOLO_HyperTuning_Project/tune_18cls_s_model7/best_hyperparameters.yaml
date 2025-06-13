@@ -1,0 +1,31 @@
+# 8/8 iterations complete ✅ (41910.96s)
+# Results saved to My_YOLO_HyperTuning_Project/tune_18cls_s_model7
+# Best fitness=0.88241 observed at iteration 7
+# Best fitness metrics are {'metrics/precision(B)': 0.93998, 'metrics/recall(B)': 0.91428, 'metrics/mAP50(B)': 0.96111, 'metrics/mAP50-95(B)': 0.87366, 'val/box_loss': 0.50388, 'val/cls_loss': 0.46414, 'val/dfl_loss': 0.67879, 'fitness': 0.88241}
+# Best fitness model is My_YOLO_HyperTuning_Project/train82
+# Best fitness hyperparameters are printed below.
+
+lr0: 0.00855
+lrf: 0.01
+momentum: 0.94606
+weight_decay: 0.00047
+warmup_epochs: 2.33633
+warmup_momentum: 0.86462
+box: 9.18568
+cls: 0.71951
+dfl: 1.27187
+hsv_h: 0.01361
+hsv_s: 0.89719
+hsv_v: 0.3497
+degrees: 0.0
+translate: 0.09352
+scale: 0.48331
+shear: 0.0
+perspective: 0.0
+flipud: 0.0
+fliplr: 0.41134
+bgr: 0.0
+mosaic: 0.77764
+mixup: 0.0
+cutmix: 0.0
+copy_paste: 0.0

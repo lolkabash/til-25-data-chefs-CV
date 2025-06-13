@@ -1,0 +1,7 @@
+path: /home/jupyter/felixfelixfelix/yolo_dataset_output
+train: train/images
+val: val/images
+nc: 18
+names: [cargo_aircraft, commercial_aircraft, drone, fighter_jet, fighter_plane, helicopter,
+  light aircraft, missile, truck, car, tank, bus, van, cargo_ship, yacht, cruise_ship,
+  warship, sailboat]

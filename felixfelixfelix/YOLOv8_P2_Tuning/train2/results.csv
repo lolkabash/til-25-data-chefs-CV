@@ -1,0 +1,2 @@
+epoch,time,train/box_loss,train/cls_loss,train/dfl_loss,metrics/precision(B),metrics/recall(B),metrics/mAP50(B),metrics/mAP50-95(B),val/box_loss,val/cls_loss,val/dfl_loss,lr/pg0,lr/pg1,lr/pg2
+1,737.103,2.70013,4.76546,3.4555,0.18494,0.28635,0.13186,0.06223,1.73628,2.5849,2.35709,0.00333011,0.00333011,0.00333011

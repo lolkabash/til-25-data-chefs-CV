@@ -1,0 +1,31 @@
+# 7/20 iterations complete ✅ (99483.69s)
+# Results saved to YOLOv8_P2_Tuning/tune_run_p2_weighted3
+# Best fitness=0.77804 observed at iteration 4
+# Best fitness metrics are {'metrics/precision(B)': 0.83136, 'metrics/recall(B)': 0.85648, 'metrics/mAP50(B)': 0.86735, 'metrics/mAP50-95(B)': 0.76812, 'val/box_loss': 0.36329, 'val/cls_loss': 0.80104, 'val/dfl_loss': 0.85151, 'fitness': 0.77804}
+# Best fitness model is YOLOv8_P2_Tuning/train6
+# Best fitness hyperparameters are printed below.
+
+lr0: 0.01092
+lrf: 0.01296
+momentum: 0.98
+weight_decay: 0.00035
+warmup_epochs: 3.17567
+warmup_momentum: 0.69645
+box: 5.4976
+cls: 0.69935
+dfl: 1.26811
+hsv_h: 0.0124
+hsv_s: 0.70534
+hsv_v: 0.49175
+degrees: 0.0
+translate: 0.08286
+scale: 0.44177
+shear: 0.0
+perspective: 0.0
+flipud: 0.0
+fliplr: 0.45064
+bgr: 0.0
+mosaic: 1.0
+mixup: 0.0
+cutmix: 0.0
+copy_paste: 0.0
