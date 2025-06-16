@@ -1,106 +1,91 @@
-# TIL-25 Data Chefs - Computer Vision Challenge
+# Computer Vision (CV) Challenge - Data Chefs @ TIL-25 Hackathon
 
-**Hackathon:** TIL-25 Hackathon
-**Team:** Data Chefs
-**Author:** lolkabash
+![Validation Batch Prediction](felixfelixfelix/YOLOv8_P2_Tuning/train9/val_batch2_pred.jpg)
 
-## 📖 Description
+Welcome to the Computer Vision (CV) challenge repository for **Team Data Chefs** from the DSTA BrainHack TIL-AI 2025! This repository (`lolkabash/til-25-data-chefs-CV`) houses the code, Jupyter notebooks, models, and scripts we developed to tackle the object detection task.
 
-This repository contains the solution for the Computer Vision (CV) challenge as part of the TIL-25 Hackathon. The project involved [**Specify the CV task, e.g., image classification, object detection, image segmentation, etc.**].
+The primary language used here is Python, with a significant portion of development and experimentation conducted in Jupyter Notebooks.
 
-## 💻 Technologies Used
+## 📝 Challenge Description
 
-*   **Jupyter Notebook:** For experimentation, model development, and visualization.
-*   **Python:** Core programming language for model implementation and scripting.
-*   **PowerShell/Shell Scripts:** For automation tasks, data management, or environment setup.
-*   **(Mention specific CV libraries/frameworks used, e.g., OpenCV, Pillow, Scikit-image, TensorFlow/Keras, PyTorch, YOLO, Detectron2.)**
-*   **(Mention other key Python libraries, e.g., NumPy, Pandas, Matplotlib, Scikit-learn.)**
+The objective of the CV challenge was to detect, locate, and classify 18 specific classes of objects (vehicles, vessels, aircraft) within complex image frames. The target classes were: `cargo_aircraft`, `commercial_aircraft`, `drone`, `fighter_jet`, `fighter_plane`, `helicopter`, `light aircraft`, `missile`, `truck`, `car`, `tank`, `bus`, `van`, `cargo_ship`, `yacht`, `cruise_ship`, `warship`, and `sailboat`.
 
-## ⚙️ Working Process & Solution
+## 🔗 Repository Links
 
-This section outlines the general steps taken to address the Computer Vision challenge.
+*   **This Repository:** [lolkabash/til-25-data-chefs-CV](https://github.com/lolkabash/til-25-data-chefs-CV)
+*   **Main Team Repository:** For an overview of our entire TIL-25 Hackathon project and other challenges, please visit [lolkabash/til-25-data-chefs](https://github.com/lolkabash/til-25-data-chefs).
 
-### 1. Data Collection & Preparation
-*   **Dataset Used:** (Describe the dataset(s) used. E.g., COCO, ImageNet, Pascal VOC, or a custom dataset. Mention size, image types, number of classes.)
-*   **Preprocessing:** (Detail the steps taken to prepare the images, e.g., resizing, normalization, data augmentation techniques like rotation, flipping, color jittering.)
-*   **Annotation:** (If applicable, how were images annotated? E.g., bounding boxes for object detection, masks for segmentation. Tools used.)
+## 💻 Key Technologies We Used
 
-### 2. Model Selection & Architecture
-*   **Model Choice:** (Explain why a particular CV model or architecture was chosen for the task. E.g., ResNet, VGG, EfficientNet, YOLOv5, Mask R-CNN.)
-*   **Architecture Details:** (Briefly describe the model architecture if it was custom or significantly modified.)
-*   **Pre-trained Models:** (Specify if any pre-trained weights were used, e.g., models pre-trained on ImageNet.)
+*   **Python:** Our primary language for scripting and model training.
+*   **Jupyter Notebooks:** Extensively used for experimentation, data preprocessing, model training, and visualization.
+*   **Ultralytics YOLOv8:** The core framework for our object detection model. We specifically utilized the `yolov8n-p2.yaml` architecture.
+*   **PyTorch:** The backend deep learning library for YOLOv8, enabling GPU acceleration.
+*   **OpenCV (`opencv-python`):** For image loading, preprocessing, and various image manipulation tasks.
+*   **YAML:** For dataset and model configuration files.
+*   **NumPy:** For numerical operations, especially with image data and bounding boxes.
+*   **PowerShell & Shell Scripts:** For automating dataset preparation, training runs, and file management.
+*   **Matplotlib & Pillow:** For image visualization and manipulation during development.
 
-### 3. Training Process
-*   **Environment Setup:** (Briefly mention the environment, e.g., local machine specs, cloud VM, GPU details, specific Python/library versions.)
-*   **Training Configuration:** (Key hyperparameters, loss functions appropriate for the task, optimizers, batch size, number of epochs, learning rate schedulers.)
-*   **Fine-tuning Strategy:** (If a pre-trained model was used, describe how it was fine-tuned.)
-*   **Challenges Faced:** (Any significant challenges during training, e.g., overfitting, class imbalance, long training times, and how they were addressed.)
+## ✨ Our Solution & Key Achievements
 
-### 4. Evaluation
-*   **Metrics Used:** (How was the model performance measured? E.g., accuracy, precision, recall, F1-score, mAP (mean Average Precision) for object detection, IoU (Intersection over Union) for segmentation.)
-*   **Validation Strategy:** (How was the model validated during training?)
-*   **Test Set Performance:** (Results on the final, unseen test set.)
+Our strategy for the CV challenge centered on training a robust YOLOv8 model tailored to the 18 specified classes. The development process involved several key stages:
 
-### 5. Results & Key Findings
-*   **Final Model Performance:** (Summarize the best results achieved.)
-*   **Insights:** (Any interesting insights gained from the model's predictions or the training process.)
-*   **Visualizations:** (Consider linking to or embedding examples of model output, e.g., images with bounding boxes, segmentation masks, classification labels.)
+### 1. Dataset Preparation
+We organized our image data into `train/` and `val/` sets, with corresponding label files in YOLO format. A crucial configuration file, `yolo_18_classes_config.yaml`, was generated by our training script to define dataset paths (defaulting to `./yolo_dataset_output/`) and the 18 class names.
 
-## 🚀 Setup and Usage
+### 2. Model Selection & Configuration
+We opted for the `yolov8n-p2.yaml` variant of YOLOv8, aiming for an optimal balance between detection performance and inference speed, presumably suitable for the competition's P2 performance tier. Our standard input image size was set to 640x640 pixels.
+
+### 3. Hyperparameter Tuning
+Before final training, we utilized YOLOv8's built-in tuning capabilities (`model.tune()`) via our `train_yolo_model.py` script. This process ran for 200 iterations, focusing on maximizing the mAP (mean Average Precision) score. The tuned hyperparameters (including learning rate, momentum, and various augmentation settings like `hsv_h`, `fliplr`, `mosaic`) were then used for the final, extended training run.
+
+Tuning runs and their outputs were saved under the `YOLOv8_P2_Tuning/` project directory. 
+
+### 4. Training Pipeline (`train_yolo_model.py`)
+Our core training logic is encapsulated in the `train_yolo_model.py` script. Key aspects of this pipeline include:
+*   **Consolidated Script:** It handles hyperparameter tuning, training, and validation.
+*   **Custom Callbacks:** During training (defaulted to 300 epochs), we implemented custom callbacks to monitor progress, estimate remaining time, and periodically save backup model weights (e.g., every 20 epochs as defined by `EXPORT_INTERVAL`).
+*   **Weighted Dataloader (Experimental):** The script includes an optional `YOLOWeightedDataset` class designed to potentially address class imbalance by adjusting sampling probabilities. This could be enabled by uncommenting a line in the script.
+*   **Project Structure:** Training outputs, including models and logs, are saved under the project name `My_YOLOv8_18Class_P2_Project` and run name `train_run_final`.
+
+### 5. Validation
+We used the `model.val()` function, integrated into our training script, to evaluate our trained models on the designated validation set. Our primary metric of focus was mAP50-95.
+
+### 6. Final Model
+The best performing model checkpoint from our comprehensive training run (using the tuned hyperparameters) is saved as `best.pt`. This was the model intended for submission.
+
+## 🚀 Training the Model
+
+The primary script for all operations is `train_yolo_model.py`.
 
 ### Prerequisites
-*   Python (version, e.g., 3.8+)
-*   Jupyter Notebook/JupyterLab
-*   Git
-*   (List other major dependencies or system requirements, e.g., CUDA for GPU)
-
-### Installation
-1.  Clone the repository:
-    ```bash
-    git clone https://github.com/lolkabash/til-25-data-chefs-CV.git
-    cd til-25-data-chefs-CV
-    ```
-2.  (If Git LFS was used for model files, etc.)
-    ```bash
-    # git lfs pull
-    ```
-3.  Install dependencies:
-    *(Provide instructions, e.g., using pip)*
-    ```bash
-    pip install -r requirements.txt
-    ```
-    *(Or if you used Conda)*
-    ```bash
-    # conda env create -f environment.yml
-    # conda activate your_env_name
-    ```
-
-### Running the Code
-*   **Data Preparation:**
-    *(Explain how to run any data preparation scripts or notebooks.)*
-*   **Training:**
-    *(Explain how to run the training scripts or notebooks.)*
-    ```bash
-    # e.g., jupyter notebook notebooks/Train_CV_Model.ipynb
-    # or python train_cv.py --config configs/cv_config.yaml
-    ```
-*   **Inference/Prediction:**
-    *(Explain how to use the trained model for predictions on new images/data.)*
-
-## 📁 File Structure (Optional - Example)
-
+Ensure you have the necessary libraries installed:
+```bash
+pip install torch ultralytics onnx onnxruntime matplotlib opencv-python Pillow pyyaml --quiet
 ```
-til-25-data-chefs-CV/
-├── notebooks/                  # Jupyter notebooks for development, training, evaluation
-├── src/                        # Python source code for models, utilities
-├── scripts/                    # Shell/PowerShell scripts for automation
-├── configs/                    # Configuration files
-├── data/                       # Placeholder for datasets (use .gitignore or LFS appropriately)
-├── models/                     # Saved model weights/checkpoints (use .gitignore or LFS)
-├── .gitignore
-└── README.md
-```
-*(Adjust the file structure to match your actual repository layout.)*
 
-## 🙏 Acknowledgements (Optional)
-*   Mention any datasets, pre-trained models, or research that inspired your solution.
+### Configuration within `train_yolo_model.py`:
+*   **`YOLO_DATASET_ROOT_PATH`**: Path to your dataset (default: `./yolo_dataset_output`). Ensure this directory contains `train/images/`, `train/labels/`, `val/images/`, `val/labels/`.
+*   **`MODEL_VARIANT`**: YOLOv8 model architecture (default: `yolov8n-p2.yaml`).
+*   **`IMAGE_SIZE`**: Input image size (default: `640`).
+*   **`BATCH_SIZE`**: Adjust based on your GPU VRAM (default: `8`).
+*   **`EPOCHS`**: Number of training epochs (default: `300`).
+*   **`EXPORT_INTERVAL`**: Frequency of saving backup models (default: `20` epochs).
+*   **Control Flags**:
+    *   `SHOULD_TUNE`: Set to `True` to run hyperparameter tuning. The script will then exit, requiring you to copy the suggested hyperparameters into the `hyperparams` dictionary in the script for the main training run.
+    *   `SHOULD_TRAIN`: Set to `True` to run the main model training (default).
+    *   `SHOULD_VALIDATE`: Set to `True` to validate an existing model.
+
+### Running the script:
+```bash
+python train_yolo_model.py
+```
+
+### Model Output:
+*   **Best Model:** The best performing model from training is saved at:
+    `My_YOLOv8_18Class_P2_Project/train_run_final/weights/best.pt`
+*   **Periodic Backups:** Intermediate models are saved during training (e.g., `epoch_20.pt`, `epoch_40.pt`) in the same `weights` directory.
+*   **Tuning Results:** Hyperparameter tuning outputs are saved under `YOLOv8_P2_Tuning/tune_run_final/`.
+
+This iterative process of dataset preparation, hyperparameter tuning, training with custom callbacks, and rigorous validation allowed us to develop our best possible YOLOv8 model for the challenge.
