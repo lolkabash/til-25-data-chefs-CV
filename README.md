@@ -2,7 +2,7 @@
 
 ![Validation Batch Prediction](felixfelixfelix/YOLOv8_P2_Tuning/train9/val_batch2_pred.jpg)
 
-Welcome to the Computer Vision (CV) challenge repository for **Team Data Chefs** from the DSTA BrainHack TIL-AI 2025! This repository (`lolkabash/til-25-data-chefs-CV`) houses the code, Jupyter notebooks, models, and scripts we developed to tackle the object detection task.
+Welcome to the Computer Vision (CV) challenge repository for **Team Data Chefs** from the DSTA BrainHack TIL-AI 2025! This repository (`TimSeah/til-25-data-chefs-CV`) houses the code, Jupyter notebooks, models, and scripts we developed to tackle the object detection task.
 
 The primary language used here is Python, with a significant portion of development and experimentation conducted in Jupyter Notebooks.
 
@@ -12,8 +12,8 @@ The objective of the CV challenge was to detect, locate, and classify 18 specifi
 
 ## 🔗 Repository Links
 
-*   **This Repository:** [lolkabash/til-25-data-chefs-CV](https://github.com/lolkabash/til-25-data-chefs-CV)
-*   **Main Team Repository:** For an overview of our entire TIL-25 Hackathon project and other challenges, please visit [lolkabash/til-25-data-chefs](https://github.com/lolkabash/til-25-data-chefs).
+*   **This Repository:** [TimSeah/til-25-data-chefs-CV](https://github.com/TimSeah/til-25-data-chefs-CV)
+*   **Main Team Repository:** For an overview of our entire TIL-25 Hackathon project and other challenges, please visit [TimSeah/til-25-data-chefs](https://github.com/TimSeah/til-25-data-chefs).
 
 ## 💻 Key Technologies We Used
 
